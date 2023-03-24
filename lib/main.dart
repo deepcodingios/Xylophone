@@ -9,6 +9,22 @@ void playSound(int audio) {
   player.play(AssetSource('note$audio.wav'));
 }
 
+Center getWidget({Color color, int soundNumber}) {
+  return Center(
+    child: Container(
+      height: 150.0,
+      width: double.infinity,
+      color: color,
+      child: TextButton(
+        onPressed: () {
+          playSound(soundNumber);
+        },
+        child: Text('$soundNumber'),
+      ),
+    ),
+  );
+}
+
 class XylophoneApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -20,71 +36,11 @@ class XylophoneApp extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
-              Center(
-                child: Container(
-                  height: 150.0,
-                  width: double.infinity,
-                  color: Colors.green,
-                  child: TextButton(
-                    onPressed: () {
-                      playSound(1);
-                    },
-                    child: Text('1'),
-                  ),
-                ),
-              ),
-              Center(
-                child: Container(
-                  height: 150.0,
-                  width: double.infinity,
-                  color: Colors.red,
-                  child: TextButton(
-                    onPressed: () {
-                      playSound(2);
-                    },
-                    child: Text('2'),
-                  ),
-                ),
-              ),
-              Center(
-                child: Container(
-                  height: 150.0,
-                  width: double.infinity,
-                  color: Colors.blue,
-                  child: TextButton(
-                    onPressed: () {
-                      playSound(3);
-                    },
-                    child: Text('3'),
-                  ),
-                ),
-              ),
-              Center(
-                child: Container(
-                  height: 150.0,
-                  width: double.infinity,
-                  color: Colors.limeAccent,
-                  child: TextButton(
-                    onPressed: () {
-                      playSound(4);
-                    },
-                    child: Text('4'),
-                  ),
-                ),
-              ),
-              Center(
-                child: Container(
-                  height: 150.0,
-                  width: double.infinity,
-                  color: Colors.orange,
-                  child: TextButton(
-                    onPressed: () {
-                      playSound(5);
-                    },
-                    child: Text('5'),
-                  ),
-                ),
-              ),
+              getWidget(color: Colors.green, soundNumber: 1),
+              getWidget(color: Colors.red, soundNumber: 2),
+              getWidget(color: Colors.yellow, soundNumber: 3),
+              getWidget(color: Colors.blue, soundNumber: 4),
+              getWidget(color: Colors.orange, soundNumber: 5),
             ],
           ),
         ),
